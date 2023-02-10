@@ -4,8 +4,8 @@ import read from '../reader';
 jest.mock('../reader');
 beforeEach(() => jest.resetAllMocks());
 
-test(('test negative method GameSavingLoader.load()'), () => {
+test(('test negative method GameSavingLoader.load()'), async () => {
   read.mockRejectedValue(new Error('Error'));
-  GameSavingLoader.load()
-    .then((err) => expect(err.message).toBe('Error'));
+  const err = await GameSavingLoader.load();
+  expect(err.message).toBe('Error');
 });

@@ -1,6 +1,6 @@
 import GameSavingLoader from '../gameSavingLoader';
 
-test('test positive method GameSavingLoader.load()', () => {
+test('test positive method GameSavingLoader.load()', async () => {
   const output = {
     id: 9,
     created: 1546300800,
@@ -8,6 +8,6 @@ test('test positive method GameSavingLoader.load()', () => {
       id: 1, name: 'Hitman', level: 10, points: 2000,
     },
   };
-  GameSavingLoader.load()
-    .then((data) => expect(data).toEqual(output));
+  const data = await GameSavingLoader.load();
+  expect(data).toEqual(output);
 });
